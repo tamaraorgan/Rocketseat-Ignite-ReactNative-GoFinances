@@ -1,18 +1,19 @@
 import styled, { css } from 'styled-components/native'
 
 import { Feather } from '@expo/vector-icons'
-import { TouchableOpacity } from 'react-native'
+import { RectButton } from 'react-native-gesture-handler'
 import { RFValue } from 'react-native-responsive-fontsize'
 
 interface TransactionProps {
   type: 'up' | 'down'
   isActive: boolean
+  children: any
 }
 
-export const Container = styled(TouchableOpacity)<TransactionProps>`
+export const Container = styled(RectButton)<TransactionProps>`
   width: 48%;
 
-  border: 1.5px solid ${(props) => props.theme.colors.text};
+  background-color: ${props => props.theme.colors.backButton};
   border-radius: 5px;
 
   flex-direction: row;
@@ -30,7 +31,6 @@ export const Container = styled(TouchableOpacity)<TransactionProps>`
     type === 'up' &&
     css`
       background-color: ${({ theme }) => theme.colors.success_light};
-      border: none;
     `}
 
   ${({ isActive, type }) =>
@@ -38,7 +38,6 @@ export const Container = styled(TouchableOpacity)<TransactionProps>`
     type === 'down' &&
     css`
       background-color: ${({ theme }) => theme.colors.attention_light};
-      border: none;
     `}
 `
 
@@ -51,5 +50,5 @@ export const Icon = styled(Feather)<TransactionProps>`
 
 export const Title = styled.Text`
   font-family: ${(props) => props.theme.fonts.regular};
-  color: ${props => props.theme.colors.title};
+  color: ${(props) => props.theme.colors.title};
 `

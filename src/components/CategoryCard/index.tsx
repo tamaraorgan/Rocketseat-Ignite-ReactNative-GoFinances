@@ -9,8 +9,6 @@ interface Props {
 }
 
 export function CategoryCard({ name, icon, onPress, isActive }: Props) {
-  console.log(isActive, 'is');
-  
   return (
     <Container onPress={onPress} isActive={isActive}>
       <Icon name={icon} />
